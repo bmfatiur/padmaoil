@@ -12,7 +12,7 @@
                 <div class="product-single-content w-50">
                     <h3>Pure Nature Hohey</h3>
                     <div class="rating-wrap fix">
-                        <span class="pull-left">$219.56</span>
+                        <span class="pull-left">৳219.56</span>
                         <ul class="rating pull-right">
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>

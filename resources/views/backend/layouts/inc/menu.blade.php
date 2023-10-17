@@ -168,12 +168,12 @@
                 <span class="label">Coupon Discount</span>
             </a>
         </li>
-        {{-- <li>
+        <li>
             <a href="{{ route('coupon2.index') }}">
                 <i data-cs-icon="tag" class="icon" data-cs-size="18"></i>
                 <span class="label">Token</span>
             </a>
-        </li> --}}
+        </li>
         <li>
             <a href="Settings.html">
                 <i data-cs-icon="gear" class="icon" data-cs-size="18"></i>

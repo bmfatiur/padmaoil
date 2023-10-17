@@ -128,7 +128,7 @@
                                         <div class="cart-content text-white">
                                             <a href="{{ route('cart.page') }}">{{ $item->name }}</a>
                                             <span>QTY : {{ $item->qty }}</span>
-                                            <p>${{ $item->qty*$item->price }}</p>
+                                            <p>৳{{ $item->qty*$item->price }}</p>
                                             <a href="{{ route('removefrom.cart',['cart_id' => $item->rowId]) }}">
                                                 <i class="fa fa-times"></i>
                                             </a>

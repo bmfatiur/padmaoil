@@ -29,40 +29,36 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Last Modified</th>
+                    <th scope="col">Amount</th>
                     <th scope="col">Token Name</th>
-                    <th scope="col">Discount (%)</th>
-                    <th scope="col">validity_till</th>
                     <th scope="col">Options</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($coupon2s as $coupon)
-                        <tr>
-                            <th scope="row">{{ $coupon2s->firstItem()+$loop->index }}</th>
-                            <td>{{ $coupon->updated_at->format('d M Y') }}</td>
-                            <td>{{ $coupon->coupon_name  }}</td>
-                            <td>{{ $coupon->discount_amount }}</td>
-                            <td>{{ $coupon->validity_till }}</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    setting
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('coupon2.edit', $coupon->id) }}">
-                                    <i class="fas fa-edit"></i> Edit</a></li>
-                                    <li>
-                                        <form action="{{ route('coupon2.destroy', $coupon->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="dropdown-item show_confirm" type="submit"><i class="fas fa-trash"></i> Delete</a></button>
-                                        </form>
-                                    </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                    @foreach ($coupons as $coupon)
+                        @if ($coupon->isActive)
+                            <tr>
+                                <th scope="row">{{ $coupons->firstItem()+$loop->index }}</th>
+                                <td>{{ $coupon->amount }}</td>
+                                <td>{{ $coupon->coupon_name  }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        setting
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                        <li>
+                                            <form action="{{ route('coupon2.destroy', $coupon->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="dropdown-item show_confirm" type="submit"><i class="fas fa-trash"></i> Delete</a></button>
+                                            </form>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
@@ -99,7 +95,7 @@
                 form.submit();
                 Swal.fire(
                 'Deleted!',
-                'Your file has been deleted.',
+                'Your Coupon has been deleted.',
                 'success'
                 )
             }

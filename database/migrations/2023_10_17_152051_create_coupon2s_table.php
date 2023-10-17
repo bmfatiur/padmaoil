@@ -9,11 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('coupon2s', function (Blueprint $table) {
             $table->id();
+            $table->string('coupon_name')->unique();
+            $table->bigInteger('amount')->default(0);
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

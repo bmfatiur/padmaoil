@@ -1,7 +1,6 @@
 @extends('backend.layouts.master')
 
 @section('title') Token Create @endsection
-
 @push('admin_style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css" integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endpush
@@ -25,10 +24,10 @@
                     @csrf
 
                     <div class="mb-3">
-                        <label for="coupon-name" class="form-label">Token Name</label>
-                        <input type="text" name="coupon_name" class="form-control @error('coupon_name')
+                        <label for="coupon-name" class="form-label">Coupon Name</label>
+                        <input type="text" value="{{ Str::random(10) }}" name="coupon_name" class="form-control @error('coupon_name')
                             is-invalid
-                        @enderror" placeholder="enter token name" id="">
+                        @enderror" id="">
                         @error('coupon_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -36,44 +35,18 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="discount_amount" class="form-label">Discount Percentage</label>
-                        <input type="number" min="0" name="discount_amount" class="form-control @error('discount_amount')
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="number" min="1" name="amount" class="form-control @error('amount')
                             is-invalid
-                        @enderror" placeholder="enter discount percentage" id="">
-                        @error('discount_amount')
+                        @enderror" placeholder="enter amount" id="">
+                        @error('amount')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="minimum_purchase_amount" class="form-label">Minimum Purchase Amount</label>
-                        <input type="number" min="0" name="minimum_purchase_amount" class="form-control @error('minimum_purchase_amount')
-                            is-invalid
-                        @enderror">
-                        @error('minimum_purchase_amount')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="validity_till" class="form-label">Expiry Date</label>
-                        <input type="date" name="validity_till" class="form-control @error('validity_till')
-                            is-invalid
-                        @enderror" >
-                        @error('validity_till')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-
-
                     <div class="mb-3 form-check form-switch">
-                        <input class="form-check-input" name="is_active" type="checkbox" role="switch" id="activeStatus" checked>
+                        <input class="form-check-input" name="isActive" type="checkbox" role="switch" id="activeStatus" checked>
                         <label class="form-check-label" for="activeStatus">Active or Inactive</label>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -82,7 +55,7 @@
                         @enderror
                     </div>
                     <div class="mt-5">
-                        <button type="submit" class="btn btn-success">Store</button>
+                        <button type="submit" class="btn btn-success">Create</button>
                     </div>
                 </form>
             </div>

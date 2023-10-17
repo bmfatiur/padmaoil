@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\Coupon2Controller;
 use App\Http\Controllers\Backend\CustomerController as BackendCustomerController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\OrderController;
@@ -67,6 +68,11 @@ Route::prefix('')->group(function(){
                 'order_details' => $order
             ]);
         });
+
+        /*Coupon2 apply & remove */
+
+
+
     });
 });
 
@@ -86,6 +92,7 @@ Route::prefix('admin/')->group(function(){
         Route::resource('testimonial', TestimonialController::class);
         Route::resource('products', ProductController::class);
         Route::resource('coupon', CouponController::class);
+        Route::resource('coupon2', Coupon2Controller::class);
         Route::get('order-list', [OrderController::class, 'index'])->name('admin.orderlist');
         Route::get('customer-list', [BackendCustomerController::class, 'index'])->name('admin.customerlist');
 
