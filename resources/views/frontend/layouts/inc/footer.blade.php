@@ -39,16 +39,16 @@
                 <div class="col-lg-3 col-md-8 col-sm-12">
                     <div class="footer-adress">
                         <ul>
-                            <li><a href="#"><span>Email:</span> domain@gmail.com</a></li>
+                            <li><a href="#"><span>Email:</span> support@padma.com</a></li>
                             <li><a href="#"><span>Tel:</span> 0131234567</a></li>
-                            <li><a href="#"><span>Adress:</span> 52 Web Bangale , Adress line2 , ip:3105</a></li>
+                            <li><a href="#"><span>Adress:</span> Pabna, Bangladesh</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-12">
                     <div class="footer-reserved">
                         <ul>
-                            <li>Copyright © 2022 Tohoney All rights reserved.</li>
+                            <li>Copyright © 2023 Padma Oil Mills Ltd All rights reserved.</li>
                         </ul>
                     </div>
                 </div>

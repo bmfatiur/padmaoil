@@ -141,10 +141,26 @@
             </ul>
         </li>
         <li>
-            <a href="Shipping.html">
-                <i data-cs-icon="shipping" class="icon" data-cs-size="18"></i>
-                <span class="label">Shipping</span>
+            {{-- <a href="{{ route('token.index') }}" data-href="">
+                <i data-cs-icon="user" class="icon" data-cs-size="18"></i>
+                <span class="label">Token</span>
             </a>
+            <ul id="Token">
+                <li>
+                    <a href="{{ route('token.index') }}">
+                        <span class="label">List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('token.create') }}">
+                        <span class="label">Add New</span>
+                    </a>
+                </li>
+            </ul> --}}
+            {{-- <a href="{{ route('token.create') }}">
+                <i data-cs-icon="tag" class="icon" data-cs-size="18"></i>
+                <span class="label">Token</span>
+            </a> --}}
         </li>
         <li>
             <a href="{{ route('coupon.index') }}">
@@ -152,6 +168,12 @@
                 <span class="label">Coupon Discount</span>
             </a>
         </li>
+        {{-- <li>
+            <a href="{{ route('coupon2.index') }}">
+                <i data-cs-icon="tag" class="icon" data-cs-size="18"></i>
+                <span class="label">Token</span>
+            </a>
+        </li> --}}
         <li>
             <a href="Settings.html">
                 <i data-cs-icon="gear" class="icon" data-cs-size="18"></i>

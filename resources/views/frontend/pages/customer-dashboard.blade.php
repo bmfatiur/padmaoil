@@ -8,6 +8,13 @@
     <div class="card">
         <div class="card-header tx-white bg-teal">
             <h4 class="card-title tx-white">Customer Name : {{ $user->name }}</h4>
+            <div>
+                <br>
+                <h3>Acoount Balance: </h3>
+            </div>
+            <div>
+                //recharge area
+            </div>
         </div>
         <div class="card-body ">
 
