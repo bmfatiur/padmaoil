@@ -39,7 +39,7 @@ class CouponController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CouponStoreRequest $request)
-    {dd($request->all());
+    {
         Coupon::create([
             'coupon_name' => $request->coupon_name,
             'discount_amount' => $request->discount_amount,

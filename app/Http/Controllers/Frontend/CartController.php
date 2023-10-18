@@ -72,6 +72,8 @@ class CartController extends Controller
             Toastr::error('Already applied coupon!!!', 'Info!!!');
             return redirect()->back();
         }
+        //store total amount
+        Session::put('total',Cart::subtotalFloat());
 
         //if valid coupon found
         if($check !=null){
@@ -86,6 +88,7 @@ class CartController extends Controller
                     'cart_total' => Cart::subtotalFloat(),
                     'balance' => round(Cart::subtotalFloat() - (Cart::subtotalFloat() * $check->discount_amount)/100)
                 ]);
+                Session::put('total', Session::get('coupon')['balance']);
                 Toastr::success('Coupon Percentage Applied!!', 'Successfully!!');
                 return redirect()->back();
             }else{

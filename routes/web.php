@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\CouponController;
-use App\Http\Controllers\Backend\Coupon2Controller;
-use App\Http\Controllers\Backend\CustomerController as BackendCustomerController;
-use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\OrderController;
-use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\TestimonialController;
-use App\Http\Controllers\Frontend\Auth\RegisterController;
-use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Frontend\CheckoutController;
-use App\Http\Controllers\Frontend\CustomerController;
-use App\Http\Controllers\Frontend\HomeController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\Coupon2Controller;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\CustomerController;
+use App\Http\Controllers\Backend\TestimonialController;
+use App\Http\Controllers\Frontend\Auth\RegisterController;
+use App\Http\Controllers\Frontend\CustomerDashboardController;
+use App\Http\Controllers\Backend\CustomerController as BackendCustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,9 +52,6 @@ Route::prefix('')->group(function(){
         Route::get('dashboard',[CustomerController::class, 'dashboard'])->name('customer.dashboard');
         Route::get('logout', [RegisterController::class, 'logout'])->name('customer.logout');
 
-        /*Token apply */
-
-
         /*Coupon apply & remove */
         Route::post('cart/apply-coupon', [CartController::class, 'couponApply'])->name('customer.couponapply');
         Route::get('cart/remove-coupon/{coupon_name}', [CartController::class, 'removeCoupon'])->name('customer.couponremove');
@@ -70,7 +68,7 @@ Route::prefix('')->group(function(){
         });
 
         /*Coupon2 apply & remove */
-
+        Route::post('customer/dashboard/token-apply', [CustomerDashboardController::class, 'tokenApply'])->name('customer.tokenapply');
 
 
     });

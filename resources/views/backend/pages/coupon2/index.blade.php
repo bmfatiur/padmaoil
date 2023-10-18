@@ -95,7 +95,7 @@
                 form.submit();
                 Swal.fire(
                 'Deleted!',
-                'Your Coupon has been deleted.',
+                'Your Token has been deleted.',
                 'success'
                 )
             }

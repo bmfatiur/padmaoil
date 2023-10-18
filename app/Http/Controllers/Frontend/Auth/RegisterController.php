@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\CustomerStoreRequest;
 
 class RegisterController extends Controller
@@ -40,6 +41,14 @@ class RegisterController extends Controller
         // login attempt if success then redirect home
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
+
+            //save session
+            $value = User::where('email', $request->email)->first();
+            Session::put('user',[
+                'email' => $value->email,
+                'balance' => $value->balance,
+            ]);
+
             return redirect()->route('customer.dashboard');
         }
 
@@ -60,6 +69,12 @@ class RegisterController extends Controller
         // login attempt if success then redirect dashboard
         if(Auth::attempt($credentials, $request->filled('remember'))){
             $request->session()->regenerate();
+            //save session
+            $value = User::where('email', $request->email)->first();
+            Session::put('user',[
+                'email' => $request->email,
+                'balance' => $value->balance,
+            ]);
             return redirect()->intended('customer/dashboard');
         }
 

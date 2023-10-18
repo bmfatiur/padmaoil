@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Billing;
 use App\Models\Product;
@@ -78,20 +79,45 @@ class CheckoutController extends Controller
             // Update product table with decrement quantity
             Product::findOrFail($cart_item->id)->decrement('product_stock', $cart_item->qty);
         }
-        // forceDelete from cart table
-        Cart::destroy();
-        Session::forget('coupon');
+
+        //account balance updated
+        $user_balance = Session::get('user')['balance'];
+        $coupon_balance = Session::get('total');
+
+        if ($user_balance >= $coupon_balance) {
+            $available = $user_balance - $coupon_balance;
+            Session::put('user',[
+                'email' => Session::get('user')['email'],
+                'balance' => $available,
+            ]);
+            $mail = Session::get('user')['email'];
+            $user = User::where('email', $mail)->first();
+            if($user){
+                $user->update([
+                    'balance' => $available,
+                ]);
+            }else{
+                Toastr::error('Payment Error!!', 'Error');
+            }
 
 
-        // Noew get order with details information to send mail
-        $order = Order::whereId($order->id)->with(['billing', 'orderdetails'])->get();
+            // forceDelete from cart table
+            Cart::destroy();
+            Session::forget('coupon');
 
-        // Now Send Mail
-        Mail::to($request->email)->send(new PurchaseConfirm($order));
 
-        Toastr::success('Your Order placed successfully!!!!','Success');
+            // Noew get order with details information to send mail
+            $order = Order::whereId($order->id)->with(['billing', 'orderdetails'])->get();
 
-        return redirect()->route('cart.page');
+            // Now Send Mail
+            Mail::to($request->email)->send(new PurchaseConfirm($order));
 
+            Toastr::success('Your Order placed successfully!!!!','Success');
+
+            return redirect()->route('cart.page');
+        } else {
+            Toastr::error('Invalid Action/Token! Check');
+            return redirect()->back();
+        }
     }
 }

@@ -190,12 +190,13 @@
                     </div>
                     <div class="col company-details">
                         <h2 class="name">
-                            <a target="_blank" href="{{ route('home') }}">
+                            {{-- <a target="_blank" href="{{ route('home') }}">
                                 {{ env('APP_NAME') }}
-                            </a>
+                            </a> --}}
+                            Padma Oil Mills Ltd
                         </h2>
-                        <div>Ecommerce store address</div>
-                        <div>Ecommerce store mobile number</div>
+                        <div>Pabna, Bangladesh</div>
+                        <div>+880123456789</div>
                         <div>no-reply@padmamill.com</div>
                     </div>
                 </div>
