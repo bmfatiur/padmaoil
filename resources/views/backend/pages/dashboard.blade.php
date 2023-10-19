@@ -411,7 +411,7 @@
     const myChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['2020', '2021', '2022'],
+            labels: ['2021', '2022', '2023'],
             datasets: [{
                 label: '# of Orders',
                 data: <?php echo json_encode($order_yearwise) ?>,
