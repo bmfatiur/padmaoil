@@ -10,11 +10,15 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'is_active'
+    ];
 
-    public function products()
+    /*Every category has Many subcategories */
+    public function subcategories()
     {
-        return $this->hasMany(Product::class, 'category_id', 'id');
-        // ->select('id', 'name', 'slug', 'product_price', 'product_image', 'product_stock');
+        return $this->hasMany(SubCategory::class);
     }
 }

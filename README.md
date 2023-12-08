@@ -6,6 +6,30 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+## Instruction for the setup of this project
+composer install
+composer update
+mv .env.example .env
+php artisan key:generate
+make a database similar to .env database name
+php artisan storage:link
+php artisan migrate
+php artisan db:seed
+=>Need to import bd geo
+http://localhost/phpmyadmin/index.php?route=/database/import&db=padmaoil
+import sequentially
+1st->divisions
+2nd->districts
+3rd->upazilas
+4th->unions
+php artisan serve
+
+#Admin access
+admin@mail.com
+1234
+
+#For user access
+Create user & access
 
 ## About Laravel
 
